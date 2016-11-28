@@ -1,16 +1,13 @@
-FROM        ubuntu:15.10
-MAINTAINER  Frank Lemanschik
+FROM        ubuntu:16.04
+MAINTAINER  Gary Leong
  
 ENV DEBIAN_FRONTEND noninteractive
-
-# Update apt sources
-#RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 
 # Update the package repository
 RUN apt-get -qq update
 
 # Install base system
-RUN apt-get install -y varnish vim git
+RUN apt-get install -y varnish 
 
 # Make our custom VCLs available on the container
 ADD default.vcl /etc/varnish/default.vcl
