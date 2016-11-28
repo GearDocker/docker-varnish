@@ -10,7 +10,7 @@ RUN apt-get -qq update
 RUN apt-get install -y varnish 
 
 # Make our custom VCLs available on the container
-ADD default.vcl /etc/varnish/default.vcl
+#ADD default.vcl /etc/varnish/default.vcl
 
 # Export environment variables
 ENV VARNISH_PORT 80
@@ -18,9 +18,12 @@ ENV VARNISH_PORT 80
 # Expose port 80
 EXPOSE 80
 
-ADD parse /parse
-ADD start /start
+#ADD parse /parse
+#ADD start /start
+#RUN chmod 0755 /start /parse
+#CMD ["/start"]
 
-RUN chmod 0755 /start /parse
+ADD run.sh /run.sh
 
-CMD ["/start"]
+CMD ["/run.sh"]
+
